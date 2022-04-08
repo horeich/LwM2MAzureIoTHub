@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "leshan"
+		},
+		{
+			"path": "lwm2m-endpoint"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"stm32-for-vscode.openOCDPath": false
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "leshan"
+		},
+		{
+			"name": "lwm2m-client",
+			"path": "lwm2m-client"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive",
+		"stm32-for-vscode.openOCDPath": false
+	}
+}

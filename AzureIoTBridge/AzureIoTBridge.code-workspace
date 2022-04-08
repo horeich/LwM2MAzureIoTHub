@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\..\\azure-iot-pcs-remote-monitoring-dotnet"
+		},
+		{
+			"path": "..\\..\\device-simulation-dotnet\\device-simulation-dotnet"
+		}
+	],
+	"settings": {
+		"stm32-for-vscode.openOCDPath": false
+	}
+}
