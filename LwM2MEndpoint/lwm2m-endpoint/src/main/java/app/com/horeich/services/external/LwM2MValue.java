@@ -10,10 +10,10 @@ import org.eclipse.leshan.core.model.ResourceModel;
 
 public class LwM2MValue {
 
-    @JsonProperty("value")
+    //@JsonProperty("value")
     private String value;
 
-    @JsonProperty("type")
+    //@JsonProperty("type")
     private String type;
 
     public LwM2MValue(String value, String type)
@@ -32,34 +32,42 @@ public class LwM2MValue {
         this.type = type;
     }
 
-    public Object getValue() // TODO: throw
+    @JsonProperty("type")
+    public String getType()
+    {
+        return this.type;
+    }
+
+    @JsonProperty("value")
+    public String getValue() // TODO: throw
     {
         // TODO: error handling
-        if (type.equals("INTEGER"))
-        {
-            return Integer.parseInt(value);
-        }
-        else if (type.equals("LONG"))
-        {
-            return Long.parseLong(value);
-        }
-        else if (type.equals("BOOL"))
-        {
-            return Boolean.parseBoolean(value);
-        }
-        else if (type.equals("DOUBLE"))
-        {
-            return Double.parseDouble(value);
-        }
-        else if (type.equals("STRING"))
-        {
-            return value;
-        }
-        else if (type.equals("FLOAT"))
-        {
-            return Float.parseFloat(value);
-        }
-        return null;
+        return this.value;
+        // if (type.equals("INTEGER"))
+        // {
+        //     return Integer.parseInt(value);
+        // }
+        // else if (type.equals("LONG"))
+        // {
+        //     return Long.parseLong(value);
+        // }
+        // else if (type.equals("BOOL"))
+        // {
+        //     return Boolean.parseBoolean(value);
+        // }
+        // else if (type.equals("DOUBLE"))
+        // {
+        //     return Double.parseDouble(value);
+        // }
+        // else if (type.equals("STRING"))
+        // {
+        //     return value;
+        // }
+        // else if (type.equals("FLOAT"))
+        // {
+        //     return Float.parseFloat(value);
+        // }
+        // return null;
     }
 
     private ResourceModel.Type ConvertType()

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V9aSIfH/RqzQrjKwuC2zGHIeS6KkmMURkl0rj6bRUEO2c9ffhX18Lq5KiX0E//EghwATuuu5kdiFEE951KatAA==",
+  "dgSpecHash": "pPUl1ALddfrPMSzCWylvSbL2gLhp6jauzGQ0vIrRMvnDjK0/4AQQpvqSHgi0VJu/sC0dHgxUm7f74hAn7pGDxA==",
   "success": true,
-  "projectFilePath": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\Services\\Services.csproj",
+  "projectFilePath": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andi\\.nuget\\packages\\azure.core\\1.17.0\\azure.core.1.17.0.nupkg.sha512",
     "C:\\Users\\Andi\\.nuget\\packages\\azure.digitaltwins.core\\1.2.2\\azure.digitaltwins.core.1.2.2.nupkg.sha512",

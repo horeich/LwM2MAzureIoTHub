@@ -2,17 +2,17 @@
 
 <LWM2M  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://openmobilealliance.org/tech/profiles/LWM2M.xsd">
 	<Object ObjectType="MODefinition">
-		<Name>Device Properties</Name>
-		<Description1>This should be used as a generic object</Description1>
+		<Name>General Device Properties</Name>
+		<Description1>General device properties for all devices.</Description1>
 		<ObjectID>64001</ObjectID>
 		<ObjectURN>urn:oma:lwm2m:ext:64000:1.1</ObjectURN>
 		<LWM2MVersion>1.0</LWM2MVersion>
 		<ObjectVersion>1.1</ObjectVersion>
-		<MultipleInstances>Single</MultipleInstances>
+		<MultipleInstances>Multiple</MultipleInstances>
 		<Mandatory>Optional</Mandatory>
 		<Resources>
 			<Item ID="1">
-				<Name>Send Interval</Name>
+				<Name>SendInterval</Name>
 				<Operations>RW</Operations>
 				<MultipleInstances>Single</MultipleInstances>
 				<Mandatory>Mandatory</Mandatory>
@@ -22,24 +22,14 @@
 				<Description>The send interval of the device.</Description>
 			</Item>
 			<Item ID="2">
-				<Name>Reconnect Attempt</Name>
+				<Name>ReconnectAttempts</Name>
 				<Operations>RW</Operations>
 				<MultipleInstances>Single</MultipleInstances>
 				<Mandatory>Mandatory</Mandatory>
 				<Type>Integer</Type>
 				<RangeEnumeration></RangeEnumeration>
 				<Units></Units>
-				<Description>The send interval of the device.</Description>
-			</Item>
-			<Item ID="3">
-				<Name>Network Disabled Time</Name>
-				<Operations>RW</Operations>
-				<MultipleInstances>Single</MultipleInstances>
-				<Mandatory>Mandatory</Mandatory>
-				<Type>Integer</Type>
-				<RangeEnumeration></RangeEnumeration>
-				<Units>s</Units>
-				<Description>The send interval of the device.</Description>
+				<Description>The number of reconnect attemps if network is down.</Description>
 			</Item>
 		</Resources>
 		<Description2></Description2>

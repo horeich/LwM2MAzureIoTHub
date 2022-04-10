@@ -2,12 +2,12 @@ package app.com.horeich;
 
 import app.com.horeich.services.helpers.*;
 import app.com.horeich.services.http.*;
-import app.com.horeich.services.lwm2m.*;
 import app.com.horeich.services.runtime.*;
 import scala.concurrent.Await;
 
 import app.com.horeich.services.external.*;
-
+import app.com.horeich.webservice.iotbridge.AzureBridgeLink;
+import app.com.horeich.webservice.lwm2m.*;
 import app.com.horeich.webservice.runtime.*;
 
 import play.Logger;
@@ -43,11 +43,11 @@ public class LwM2MBackend {
 
         System.out.println(config.getServicesConfig().getTelemetryUrl());
 
-        TelemetryApiModel telemetry = new TelemetryApiModel();
-        TelemetryAdapter telemetryAdapter = new TelemetryAdapter(httpClientWrapper, config.getServicesConfig());
+        // TelemetryApiModel telemetry = new TelemetryApiModel();
+        // TelemetryAdapter telemetryAdapter = new TelemetryAdapter(httpClientWrapper, config.getServicesConfig());
 
-        telemetry.setHumidity("40");
-        telemetry.setTemperature("25");
+        // telemetry.setHumidity("40");
+        // telemetry.setTemperature("25");
 
         LeshanServerBuilder builder = new LeshanServerBuilder();
         // DynamicModel objectModel = null;

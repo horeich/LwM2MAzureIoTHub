@@ -45,18 +45,19 @@ public class TelemetryAdapter {
         }
     }
 
-    private HttpRequest CreateRequest(String path, TelemetryApiModel content) throws InvalidConfigurationException {
-        try {
-            HttpRequest request = new HttpRequest();
-            request.setUriFromString(String.format("LEV2/%s/?%s&%s", "telemetry", content.getTemperature(), content.getHumidity()));
-            request.getOptions().setAllowInsecureSSLServer(true);
-            return request;
-        } catch (URISyntaxException e) { // TODO: UnsupportedEncodingException if json
-            throw new InvalidConfigurationException("Unable to create http request", e);
-        }
-    }
+    // private HttpRequest CreateRequest(String path, TelemetryApiModel content) throws InvalidConfigurationException {
+    //     try {
+    //         HttpRequest request = new HttpRequest();
+    //         request.setUriFromString(String.format("LEV2/%s/?%s&%s", "telemetry", content.getTemperature(), content.getHumidity()));
+    //         request.getOptions().setAllowInsecureSSLServer(true);
+    //         return request;
+    //     } catch (URISyntaxException e) { // TODO: UnsupportedEncodingException if json
+    //         throw new InvalidConfigurationException("Unable to create http request", e);
+    //     }
+    // }
 
     private HttpRequest CreateRequest(String path) throws InvalidConfigurationException {
-        return CreateRequest(path, null);
+        //return CreateRequest(path, null);
+        return null;
     }
 }

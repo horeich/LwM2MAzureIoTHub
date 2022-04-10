@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\WebService\\WebService.csproj": {}
+    "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\WebService\\WebService.csproj": {}
   },
   "projects": {
-    "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\Services\\Services.csproj": {
+    "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\Services\\Services.csproj",
+        "projectPath": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\Andi\\.nuget\\packages\\",
-        "outputPath": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\Services\\obj\\",
+        "outputPath": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -123,14 +123,14 @@
         }
       }
     },
-    "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\WebService\\WebService.csproj": {
+    "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\WebService\\WebService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\WebService\\WebService.csproj",
+        "projectUniqueName": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\WebService\\WebService.csproj",
         "projectName": "WebService",
-        "projectPath": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\WebService\\WebService.csproj",
+        "projectPath": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\WebService\\WebService.csproj",
         "packagesPath": "C:\\Users\\Andi\\.nuget\\packages\\",
-        "outputPath": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\WebService\\obj\\",
+        "outputPath": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\WebService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -150,8 +150,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\Services\\Services.csproj": {
-                "projectPath": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\Services\\Services.csproj"
+              "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\Services\\Services.csproj": {
+                "projectPath": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\Services\\Services.csproj"
               }
             }
           }

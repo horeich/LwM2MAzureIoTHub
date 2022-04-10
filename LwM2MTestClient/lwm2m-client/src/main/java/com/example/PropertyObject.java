@@ -22,7 +22,7 @@ public class PropertyObject extends BaseInstanceEnabler implements Destroyable {
 
     private static final int SEND_INTERVAL_ID = 1;
     private static final int RECONNECT_ATTEMPTS_ID = 2;
-    private static final int NETWORK_DISABLED_TIME_ID = 3;
+    //private static final int NETWORK_DISABLED_TIME_ID = 3;
 
     private PropertyModule propertyModule;
 
@@ -43,9 +43,9 @@ public class PropertyObject extends BaseInstanceEnabler implements Destroyable {
         return RECONNECT_ATTEMPTS_ID;
     }
 
-    public int getNetworkDisbledTimeId() {
-        return NETWORK_DISABLED_TIME_ID;
-    }
+    // public int getNetworkDisbledTimeId() {
+    //     return NETWORK_DISABLED_TIME_ID;
+    // }
 
     /**
      * Called when there was a write on an object or resource
@@ -63,10 +63,10 @@ public class PropertyObject extends BaseInstanceEnabler implements Destroyable {
                 Long reconnectAttemps = (Long) value.getValue();
                 propertyModule.setReconnectAttempts(reconnectAttemps);
                 return WriteResponse.success(); // we cannot send content on write
-            case NETWORK_DISABLED_TIME_ID:
-                Long networkDisabledTime = (Long) value.getValue();
-                propertyModule.setNetworkDisabledTime(networkDisabledTime);
-                return WriteResponse.success(); // we cannot send content on write
+            // case NETWORK_DISABLED_TIME_ID:
+            //     Long networkDisabledTime = (Long) value.getValue();
+            //     propertyModule.setNetworkDisabledTime(networkDisabledTime);
+            //     return WriteResponse.success(); // we cannot send content on write
             default:
                 return super.write(identity, replace, resourceid, value);
         }
@@ -85,8 +85,8 @@ public class PropertyObject extends BaseInstanceEnabler implements Destroyable {
                 return ReadResponse.success(resourceId, propertyModule.getSendInterval());
             case RECONNECT_ATTEMPTS_ID:
                 return ReadResponse.success(resourceId, propertyModule.getReconnectAttemps());
-            case NETWORK_DISABLED_TIME_ID:
-                return ReadResponse.success(resourceId, propertyModule.getNetworkDisabledTime());
+            // case NETWORK_DISABLED_TIME_ID:
+            //     return ReadResponse.success(resourceId, propertyModule.getNetworkDisabledTime());
             default:
                 return super.read(identity, resourceId);
         }

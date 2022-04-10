@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eFOyI/LAby/srzg+eqJytG0ptXHwZ/HhZWk9pISgpi3dgzHMBSXzauMbg8TNGDYYj6c9rkwjfcpfZr8Zs6Ve2w==",
+  "dgSpecHash": "a3oc1A7YGQSWdDeasrupiY1EYMJvvRzGDi4VsRLVyvNPapvXulaAThqED+GpSTcISVm22qC7tgS2iF1EexPGBg==",
   "success": true,
-  "projectFilePath": "C:\\WorkDir\\LwM2MAzureIoTHubBridge\\AzureIoTBridge\\WebService\\WebService.csproj",
+  "projectFilePath": "C:\\WorkDir\\LwM2MAzureIoTHub\\AzureIoTBridge\\WebService\\WebService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Andi\\.nuget\\packages\\autofac\\4.9.4\\autofac.4.9.4.nupkg.sha512",
     "C:\\Users\\Andi\\.nuget\\packages\\autofac.extensions.dependencyinjection\\5.0.1\\autofac.extensions.dependencyinjection.5.0.1.nupkg.sha512",

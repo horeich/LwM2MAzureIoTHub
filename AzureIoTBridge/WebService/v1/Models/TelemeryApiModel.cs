@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Horeich.Services.Models;
 
-namespace Horeich.Services.v1.Models
+namespace Horeich.WebService.v1.Models
 {
     public class TelemetryApiModel
     {
@@ -17,8 +17,12 @@ namespace Horeich.Services.v1.Models
         [JsonProperty(PropertyName = "Telemetry")]
         public Dictionary<String, LwM2MValue> Telemetry { get; set; }
 
-        public DateTime TimeStamp { get; set; }
-
+        private DateTime timeStamp = null;
+        // public DateTime TimeStamp { get; set; }
+        public TelemetryApiModel()
+        {
+            this.Telemetry = new Dictionary<string, LwM2MValue>();
+        }
         public TelemetryServiceModel ToServiceModel()
         {
             var serviceModel = new TelemetryServiceModel();

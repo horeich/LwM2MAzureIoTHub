@@ -10,7 +10,7 @@ using Microsoft.Azure.Devices.Client;
 
 using Horeich.SensingSolutions.Services.Diagnostics;
 using Horeich.SensingSolutions.Services.VirtualDevice;
-using Horeich.Services.v1.Models;
+using Horeich.WebService.v1.Models;
 
 namespace Horeich.IoTBridge.v1.Controllers
 {

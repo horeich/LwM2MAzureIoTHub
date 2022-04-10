@@ -10,21 +10,26 @@ import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
 import java.util.Hashtable;
+import java.util.Map;
 
 import org.eclipse.leshan.core.model.ResourceModel;
 
 public class TelemetryApiModel {
 
-    @JsonProperty("telemetry")
-    private Hashtable<String, LwM2MValue> telemetry;
+    private Map<String, LwM2MValue> telemetry;
 
     public TelemetryApiModel()
     {
         telemetry = new Hashtable<String, LwM2MValue>();
     }
 
-    public Hashtable<String, LwM2MValue> getTelemetry() {
+    @JsonProperty("telemetry")
+    public Map<String, LwM2MValue> getTelemetry() {
         return this.telemetry;
+    }
+
+    public void setTelemetry(Hashtable<String, LwM2MValue> telemetry) {
+        this.telemetry = telemetry;
     }
 
     public void setValue(String variableName, LwM2mResource resource)
@@ -46,9 +51,9 @@ public class TelemetryApiModel {
             String valueStr = Integer.toString((Integer)rawValue);
             telemetry.put(variableName, new LwM2MValue(valueStr, "INTEGER"));
         }
-    
         else if (resource.getType() == ResourceModel.Type.TIME)
         {
+
             // TODO:
         }
         else
@@ -59,35 +64,35 @@ public class TelemetryApiModel {
     }
 
 
-    private String temperature;
+    // private String temperature;
 
-    private String humidity;
+    // private String humidity;
 
-    // Possible values - ["60000", "300000", "600000"] in milliseconds
-    private String timePeriod;
+    // // Possible values - ["60000", "300000", "600000"] in milliseconds
+    // private String timePeriod;
 
-    // private List<ConditionApiModel> conditions;
+    // // private List<ConditionApiModel> conditions;
 
-    @JsonProperty("DateCreated")
-    public String getDateCreated() {
-        return DateTime.now(DateTimeZone.UTC).toString("yyyy-MM-dd'T'HH:mm:ssZZ");
-    }
+    // @JsonProperty("DateCreated")
+    // public String getDateCreated() {
+    //     return DateTime.now(DateTimeZone.UTC).toString("yyyy-MM-dd'T'HH:mm:ssZZ");
+    // }
 
-    @JsonProperty("temperature")
-    public String getTemperature() {
-        return temperature;
-    }
+    // @JsonProperty("temperature")
+    // public String getTemperature() {
+    //     return temperature;
+    // }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
-    }
+    // public void setTemperature(String temperature) {
+    //     this.temperature = temperature;
+    // }
 
-    @JsonProperty("humidity")
-    public String getHumidity() {
-        return humidity;
-    }
+    // @JsonProperty("humidity")
+    // public String getHumidity() {
+    //     return humidity;
+    // }
 
-    public void setHumidity(String humidity) {
-        this.humidity = humidity;
-    }
+    // public void setHumidity(String humidity) {
+    //     this.humidity = humidity;
+    // }
 }
