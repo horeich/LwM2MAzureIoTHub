@@ -45,6 +45,7 @@ public class LevelDeviceDemo {
             initializer.setInstancesForObject(LwM2mId.SERVER, new Server(12345, 25000, EnumSet.of(BindingMode.U), false, BindingMode.U));// , BindingMode.U, false, BindingMode.U));
             //initializer.setInstancesForObject(LwM2mId.DEVICE, new Device());
             initializer.setInstancesForObject(LwM2mId.DEVICE, new DeviceObject("HOREICH", "LEV1-L476RG", "89882280666018939318")); // TODO: own device
+            initializer.setInstancesForObject(LwM2mId.CONNECTIVITY_MONITORING, new ConnectivityStatistics());
 
             PropertyModule propertyModule = new PropertyModule(); // random property data generator
             PropertyObject propertyObject = new PropertyObject(propertyModule); // Tshe LwM2M object for properties

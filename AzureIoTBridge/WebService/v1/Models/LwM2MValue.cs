@@ -42,6 +42,10 @@ public class LwM2MValue
         {
             return typeof(float);
         }
+        else if (String.Compare(dataType, "TIME") == 0)
+        {
+            return typeof(long);
+        }
         else
         {
             // Unknown payload type

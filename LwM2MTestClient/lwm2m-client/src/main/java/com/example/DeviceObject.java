@@ -53,15 +53,14 @@ public class DeviceObject extends BaseInstanceEnabler implements Destroyable {
     private EnumSet<BindingMode> supportedBinding;
 
     private static final Random RANDOM = new Random();
-            //19, 20, 21);
+    // 19, 20, 21);
 
     private static final int CURRENT_TIME = 13;
 
     // private final Timer timer;
 
-    public DeviceObject()
-    {
-        
+    public DeviceObject() {
+
     }
 
     public DeviceObject(String manufacturer, String modelNumber, String serialNumber) {
@@ -72,10 +71,10 @@ public class DeviceObject extends BaseInstanceEnabler implements Destroyable {
         // notify new date each 5 second
         // this.timer = new Timer("Device-Current Time");
         // timer.schedule(new TimerTask() {
-        //     @Override
-        //     public void run() {
-        //         fireResourcesChange(13);
-        //     }
+        // @Override
+        // public void run() {
+        // fireResourcesChange(13);
+        // }
         // }, 5000, 5000);
     }
 
@@ -84,50 +83,50 @@ public class DeviceObject extends BaseInstanceEnabler implements Destroyable {
         if (!identity.isSystem())
             LOG.info("Read on Device resource /{}/{}/{}", getModel().id, getId(), resourceid);
         switch (resourceid) {
-        case 0:
-            return ReadResponse.success(resourceid, getManufacturer());
-        case 1:
-            return ReadResponse.success(resourceid, getModelNumber());
-        case 2:
-            return ReadResponse.success(resourceid, getSerialNumber());
-        case 3:
-            return ReadResponse.success(resourceid, getFirmwareVersion());
-        case 9:
-            return ReadResponse.success(resourceid, getBatteryLevel());
-        // case 10:
-        //     return ReadResponse.success(resourceid, getMemoryFree());
-        // case 11:
-        //     Map<Integer, Long> errorCodes = new HashMap<>();
-        //     errorCodes.put(0, getErrorCode());
-        //     return ReadResponse.success(resourceid, errorCodes, Type.INTEGER);
-        // case 13:
-        //     return ReadResponse.success(resourceid, getCurrentTime());
-        // case 14:
-        //     return ReadResponse.success(resourceid, getUtcOffset());
-        // case 15:
-        //     return ReadResponse.success(resourceid, getTimezone());
-        // case 16:
-        //     return ReadResponse.success(resourceid, getSupportedBinding());
-        // case 17:
-        //     return ReadResponse.success(resourceid, getDeviceType());
-        // case 18:
-        //     return ReadResponse.success(resourceid, getHardwareVersion());
-        // case 19:
-        //     return ReadResponse.success(resourceid, getSoftwareVersion());
-        // case 20:
-        //     return ReadResponse.success(resourceid, getBatteryStatus());
-        // case 21:
-        //     return ReadResponse.success(resourceid, getMemoryTotal());
-        default:
-            return super.read(identity, resourceid);
+            case 0:
+                return ReadResponse.success(resourceid, getManufacturer());
+            case 1:
+                return ReadResponse.success(resourceid, getModelNumber());
+            case 2:
+                return ReadResponse.success(resourceid, getSerialNumber());
+            case 3:
+                return ReadResponse.success(resourceid, getFirmwareVersion());
+            case 9:
+                return ReadResponse.success(resourceid, getBatteryLevel());
+            // case 10:
+            // return ReadResponse.success(resourceid, getMemoryFree());
+            case 11:
+                Map<Integer, Long> errorCodes = new HashMap<>();
+                errorCodes.put(0, getErrorCode());
+                return ReadResponse.success(resourceid, errorCodes, Type.INTEGER);
+            // case 13:
+            // return ReadResponse.success(resourceid, getCurrentTime());
+            // case 14:
+            // return ReadResponse.success(resourceid, getUtcOffset());
+            // case 15:
+            // return ReadResponse.success(resourceid, getTimezone());
+            // case 16:
+            // return ReadResponse.success(resourceid, getSupportedBinding());
+            // case 17:
+            // return ReadResponse.success(resourceid, getDeviceType());
+            // case 18:
+            // return ReadResponse.success(resourceid, getHardwareVersion());
+            // case 19:
+            // return ReadResponse.success(resourceid, getSoftwareVersion());
+            // case 20:
+            // return ReadResponse.success(resourceid, getBatteryStatus());
+            // case 21:
+            // return ReadResponse.success(resourceid, getMemoryTotal());
+            default:
+                return super.read(identity, resourceid);
         }
     }
-    
+
     // @Override
     // public void notifyResourcesChanged(int... resourceIds) {
-    //     for (ResourceChangedListener listener : listeners) {
-    //         listener.resourcesChanged(resourceIds);
-    //     }
+    // for (ResourceChangedListener listener : listeners) {
+    // listener.resourcesChanged(resourceIds);
+    // }
     // }
 
     @Override
@@ -175,20 +174,20 @@ public class DeviceObject extends BaseInstanceEnabler implements Destroyable {
         LOG.info("Write on Generic Device resource /{}/{}/{}", getModel().id, getId(), resourceid);
 
         switch (resourceid) {
-        case CURRENT_TIME:
-            LOG.info("Received current time {}", value.getValue());
-            // Application.setTime();
-            return WriteResponse.success();
-        // case 14:
-        //     setUtcOffset((String) value.getValue());
-        //     fireResourcesChange(resourceid);
-        //     return WriteResponse.success();
-        // case 15:
-        //     setTimezone((String) value.getValue());
-        //     fireResourcesChange(resourceid);
-        //     return WriteResponse.success();
-        default:
-            return super.write(identity, replace, resourceid, value);
+            case CURRENT_TIME:
+                LOG.info("Received current time {}", value.getValue());
+                // Application.setTime();
+                return WriteResponse.success();
+            // case 14:
+            // setUtcOffset((String) value.getValue());
+            // fireResourcesChange(resourceid);
+            // return WriteResponse.success();
+            // case 15:
+            // setTimezone((String) value.getValue());
+            // fireResourcesChange(resourceid);
+            // return WriteResponse.success();
+            default:
+                return super.write(identity, replace, resourceid, value);
         }
     }
 
@@ -275,6 +274,6 @@ public class DeviceObject extends BaseInstanceEnabler implements Destroyable {
 
     @Override
     public void destroy() {
-        //timer.cancel();
+        // timer.cancel();
     }
 }

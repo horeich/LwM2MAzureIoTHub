@@ -20,13 +20,13 @@ public class LevelTelemetryModule {
     private final Random rng = new Random();
     private final ScheduledExecutorService scheduler;
 
-    private double waterTemperature = 20.0f;
+    private double waterTemperature = 20.0321;
     public volatile boolean hasWaterTemperatureChanged = true; // set true @startup
 
-    private double deviceTemperature = 60.0f;
+    private double deviceTemperature = 60.896;
     public volatile boolean hasDeviceTemperatureChanged = true;
 
-    private double waterPressure = 100;
+    private double waterPressure = 100.01233;
     public volatile boolean hasWaterPressureChanged = true;
 
     private Instant timeStamp = Instant.now();

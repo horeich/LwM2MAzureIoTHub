@@ -45,13 +45,13 @@ namespace Horeich.IoTBridge.v1.Models
         public PropertyServiceModel ToServiceModel()
         {
             var serviceModel = new PropertyServiceModel();
-            foreach (KeyValuePair<string, LwM2MValue> item in Properties)
-            {
-                // TODO: error handling
-                Type type = LwM2MValue.ConvertType(item.Value.Type);
-                object obj = Convert.ChangeType(item.Value.Value, type);
-                serviceModel.Properties[item.Key] = obj;
-            }
+            // foreach (KeyValuePair<string, LwM2MValue> item in Properties)
+            // {
+            //     // TODO: error handling
+            //     Type type = LwM2MValue.ConvertType(item.Value.Type);
+            //     object obj = Convert.ChangeType(item.Value.Value, type);
+            //     serviceModel.Properties[item.Key] = obj;
+            // }
             return serviceModel;
         }
         // public List<string> Telemetry { get; set; }

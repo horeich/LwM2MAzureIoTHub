@@ -11,14 +11,14 @@ namespace Horeich.WebService.v1.Models
 {
     public class TelemetryApiModel
     {
-        private const String TIME_STAMP_IDENT = "TimeStamp";
+        private const String TIME_STAMP_IDENT = "Timestamp";
 
         /// Note: keys in URI must have the same name as dictionary name
         [JsonProperty(PropertyName = "Telemetry")]
         public Dictionary<String, LwM2MValue> Telemetry { get; set; }
 
-        private DateTime timeStamp = null;
-        // public DateTime TimeStamp { get; set; }
+        //private DateTime timeStamp = null;
+        public DateTime Timestamp { get; set; }
         public TelemetryApiModel()
         {
             this.Telemetry = new Dictionary<string, LwM2MValue>();
@@ -27,19 +27,21 @@ namespace Horeich.WebService.v1.Models
         {
             var serviceModel = new TelemetryServiceModel();
             Dictionary<String, Object> serializeableTelmetry = new Dictionary<string, object>();
-            foreach (KeyValuePair<string, LwM2MValue> item in Telemetry)
+            foreach (KeyValuePair<string, LwM2MValue> lwM2mValue in Telemetry)
             {
                 // TODO: error handling
-                Type type = LwM2MValue.ConvertType(item.Value.Type);
-                object obj = Convert.ChangeType(item.Value.Value, type);
-                if (item.Key == TIME_STAMP_IDENT)
+                Type type = LwM2MValue.ConvertType(lwM2mValue.Value.Type); // double, int, bool, ...
+                if (lwM2mValue.Value.Type.Equals("TIME"))
                 {
-                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds((long)obj);
+                    long unixTime = (long)Convert.ChangeType(lwM2mValue.Value.Value, type);
+                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(unixTime); // DateTimeOffset.FromUnixTimeSeconds(item.Value);
                     serviceModel.TimeStamp = dateTimeOffset.UtcDateTime;
                 }
                 else
                 {
-                    serializeableTelmetry.Add(item.Key, obj);
+                    Object convertedValue = Convert.ChangeType(lwM2mValue.Value.Value, type);
+                    serializeableTelmetry.Add(lwM2mValue.Key, convertedValue);
+                    // serializeableTelmetry.Add(item.Key, obj);
                 }
             }
 

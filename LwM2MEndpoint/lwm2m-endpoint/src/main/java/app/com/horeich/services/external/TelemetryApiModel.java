@@ -9,6 +9,7 @@ import org.eclipse.leshan.core.node.LwM2mSingleResource;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.Map;
 
@@ -32,35 +33,15 @@ public class TelemetryApiModel {
         this.telemetry = telemetry;
     }
 
-    public void setValue(String variableName, LwM2mResource resource)
+    /**
+     * Add resource to API model (includes translatiing resource value to JSON compatible exchange format)
+     * @param variableName
+     * @param resource
+     */
+    public void add(String variableName, LwM2mResource resource)
     {
-        Object rawValue  = resource.getValue();
-        
-        if (resource.getType() == ResourceModel.Type.BOOLEAN)
-        {
-            String valueStr = Boolean.toString((Boolean)rawValue);
-            telemetry.put(variableName, new LwM2MValue(valueStr, "BOOL"));
-        }
-        else if (resource.getType() == ResourceModel.Type.FLOAT)
-        {
-            String valueStr = Double.toString((Double)rawValue);
-            telemetry.put(variableName, new LwM2MValue(valueStr, "FLOAT"));
-        }
-        else if (resource.getType() == ResourceModel.Type.INTEGER)
-        {
-            String valueStr = Integer.toString((Integer)rawValue);
-            telemetry.put(variableName, new LwM2MValue(valueStr, "INTEGER"));
-        }
-        else if (resource.getType() == ResourceModel.Type.TIME)
-        {
-
-            // TODO:
-        }
-        else
-        {
-            //throw;
-        }
-       
+        telemetry.put(variableName, LwM2MValue.Convert(resource));
+        // TODO: throw if null?
     }
 
 

@@ -1,5 +1,7 @@
 package app.com.horeich.webservice.iotbridge;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +34,9 @@ import app.com.horeich.services.external.LwM2MValue;
 import app.com.horeich.services.external.PropertyApiModel;
 import app.com.horeich.services.external.TelemetryApiModel;
 import app.com.horeich.webservice.lwm2m.DynamicLwM2mModelRepository;
-import app.com.horeich.webservice.lwm2m.PropertyServiceModel;
+import app.com.horeich.webservice.lwm2m.LwM2mId;
+import app.com.horeich.webservice.lwm2m.LwM2mResourceId;
+import app.com.horeich.webservice.lwm2m.PropertyModel;
 import play.Logger;
 
 public class AzureBridgeLink {
@@ -100,7 +104,7 @@ public class AzureBridgeLink {
     public void observeResources(Registration registration) {
         try {
             for (LwM2mPath path : registration.getAvailableInstances()) {
-
+                // TODO: observe < 7 only specific resources
                 if (path.getObjectId() > 7) {
                     ObserveRequest request = new ObserveRequest(ContentFormat.TLV, path.getObjectId()); // only TLV or
                                                                                                         // JSON
@@ -127,10 +131,10 @@ public class AzureBridgeLink {
     public void syncProperties(Registration registration) {
 
         // Get reported properties from Azure IoT Bridge virtual device twin
-        PropertyApiModel propertyApiModel = null;
+        PropertyApiModel propertyServiceModel = null;
         try {
             CompletionStage<PropertyApiModel> writeStage = bridgeClient.getPropertiesAsync(registration.getEndpoint());
-            propertyApiModel = writeStage.toCompletableFuture().get();
+            propertyServiceModel = writeStage.toCompletableFuture().get();
         } catch (Exception e) {
             LOG.error("Could not fetch properties {0}", e);
         }
@@ -138,39 +142,41 @@ public class AzureBridgeLink {
         // Get all the object instances that are made available by the client
         // -> Do an observe on all of them (except default)
         // A path is just the number representation e.g. 3/1/2 (object, object instance, resource)
-        Set<LwM2mPath> paths = registration.getAvailableInstances();
+        Set<LwM2mPath> registrationPaths = registration.getAvailableInstances();
 
         // Try load new object models (if not loaded yet)
         try {
-            loadObjectModels(paths);
+            loadObjectModels(registrationPaths);
         } catch (Exception e) {
             LOG.error("Error loading models");
         }
+        
+        PropertyModel serviceModel = new PropertyModel();
 
         // Map all properties to objects and resources
-        // Hashtable<String, LwM2MValue> upstreamProperties =
-        // propertyApiModel.getProperties();
-        PropertyServiceModel serviceModel = new PropertyServiceModel();
-        for (LwM2mPath path : paths) {
+        for (LwM2mPath path : registrationPaths) {
             if (path.isObjectInstance()) // e.g. /64000/0
             {
                 // Load the object model according to the object id
+                // and go through all resources of the model and add to downlink property if NAMES match
                 ObjectModel objectModel = modelRepository.getObjectModel(path.getObjectId(), "1.1");
-
-                // Go through all resources of the instance and add downlink properties to service model
                 for (ResourceModel resource : objectModel.resources.values()) {
-
+                    
                     // Get the value of the upstream property by its name derived from object model
-                    LwM2MValue value = propertyApiModel.getValue(resource.name); // upstreamProperties.get(resource.name);
-                    if (value != null && resource.operations == Operations.RW) { // check is property
-                        serviceModel.add(path.getObjectId(),
-                                LwM2mSingleResource.newResource(resource.id, value.getValue()));
+                    LwM2MValue value = propertyServiceModel.getValue(resource.name); // return null if name does not exist
+                    if (value != null && resource.operations == Operations.RW) { // check is property (RW)
+                        serviceModel.add(path.getObjectId(), LwM2mSingleResource.newResource(resource.id, value.getValue()));
                     }
                 }
             } else {
                 LOG.error("Invalid path format");
             }
         }
+
+         // Set current time
+        Instant now = Instant.now();
+        serviceModel.add(
+            LwM2mId.DEVICE, LwM2mSingleResource.newDateResource(LwM2mResourceId.CURRENT_TIME, Date.from(now))); 
 
         // We have now compiled a list of objects and resources with the property RW
         // Send them now downlink to the model
@@ -233,7 +239,7 @@ public class AzureBridgeLink {
                     if (resourceModel.operations.isWritable()) {
                         propertyApiModel.setValue(resourceModel.name, resource);
                     } else {
-                        telemetryApiModel.setValue(resourceModel.name, resource);
+                        telemetryApiModel.add(resourceModel.name, resource);
                     }
                 }
             }

@@ -13,13 +13,13 @@ import org.eclipse.leshan.core.node.LwM2mSingleResource;
 
 import app.com.horeich.services.external.LwM2MValue;
 
-public class PropertyServiceModel {
+public class PropertyModel {
     
     private Map<Integer, List<LwM2mResource>> mappedResources = new HashMap<Integer, List<LwM2mResource>>();
 
 
 
-    public PropertyServiceModel()
+    public PropertyModel()
     {
         
     }

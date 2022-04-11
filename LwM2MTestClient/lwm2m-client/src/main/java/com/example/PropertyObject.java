@@ -22,6 +22,7 @@ public class PropertyObject extends BaseInstanceEnabler implements Destroyable {
 
     private static final int SEND_INTERVAL_ID = 1;
     private static final int RECONNECT_ATTEMPTS_ID = 2;
+    
     //private static final int NETWORK_DISABLED_TIME_ID = 3;
 
     private PropertyModule propertyModule;
